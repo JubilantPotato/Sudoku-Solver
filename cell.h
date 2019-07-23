@@ -1,10 +1,10 @@
-#include "linked_list.h"
-
 typedef struct
 {
     int value;
-    LinkedList* possibles;
+    int* possibles;
+    int numPossibles;
 } Cell;
 
 Cell* createCell();
 void removeCell(Cell* delCell);
+void updatePossible(Cell* cell, int number, int isPossible);

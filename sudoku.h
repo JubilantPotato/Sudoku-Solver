@@ -1,5 +1,3 @@
-#include "cell.h"
-
 typedef struct
 {
     Cell*** cells;
@@ -8,5 +6,8 @@ typedef struct
 
 Sudoku* createSudoku();
 void destroySudoku(Sudoku* delSudoku);
-
-
+void printSudoku(Sudoku* puzzle);
+void solveSudoku(Sudoku* puzzle);
+int updateCellVertical(Sudoku* puzzle, int x, int y);
+int updateCellHorizontal(Sudoku* puzzle, int x, int y);
+int updateCellSubgrid(Sudoku* puzzle, int x, int y);
