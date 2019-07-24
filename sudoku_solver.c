@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "cell.h"
-#include "sudoku.h"
-#include "sudoku_solver.h"
+#include "sudoku.h" 
+
+/* Sudoku* readSudoku(char* filename); */
 
 int main(int argc, char** argv)
 {
@@ -29,7 +30,7 @@ int main(int argc, char** argv)
     return errCode;
 }
 
-Sudoku* readSudoku(char* filename)
+/* Sudoku* readSudoku(char* filename)
 {
     Sudoku* newPuzzle = createSudoku();
     
@@ -69,4 +70,4 @@ Sudoku* readSudoku(char* filename)
     newPuzzle->cells[8][8]->value = 6;
 
     return newPuzzle;
-}
+} */

@@ -173,3 +173,15 @@ int updateCellSubgrid(Sudoku* puzzle, int x, int y)
 
     return isUpdated;
 }
+
+Sudoku* readSudoku(char* filename)
+{
+    Sudoku* newPuzzle = createSudoku();
+    FILE* file = fopen(filename, "r");
+
+    while(fscanf())
+
+    fclose(file);
+
+    return newPuzzle;
+}
