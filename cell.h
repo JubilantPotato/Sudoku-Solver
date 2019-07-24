@@ -1,7 +1,7 @@
 typedef struct
 {
     int value;
-    int* possibles;
+    int possibles [9];
     int numPossibles;
 } Cell;
 

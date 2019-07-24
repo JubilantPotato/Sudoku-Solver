@@ -63,10 +63,13 @@ void printSudoku(Sudoku* puzzle)
             {
                 printf("   ");
             }
-            printf("|");
+            if ((jj+1) % 3 == 0) printf("|"); 
+            else printf(" ");
+            
         }
         
-        printf("\n+---+---+---+---+---+---+---+---+---+\n");
+        if ((ii+1) % 3 == 0) printf("\n+---+---+---+---+---+---+---+---+---+\n");
+        else printf("\n+   .   .   +   .   .   +   .   .   +\n");
 
         if (ii != 8) { printf("|"); }
     }
@@ -81,14 +84,13 @@ void solveSudoku(Sudoku* puzzle)
     {
         int ii, jj;
         cellsUpdated = FALSE;
- 
+
         for (ii = 0; ii < 9; ii++)
         {
             for (jj = 0; jj < 9; jj++)
-            {
-                
+            { 
                 Cell* currCell = puzzle->cells[ii][jj];
-                printf("%d\n", currCell);
+                
                 if (currCell->value == -1) /*Cell isn't set*/
                 {
                     if (updateCellVertical(puzzle, ii, jj))   cellsUpdated = TRUE;
@@ -159,8 +161,8 @@ int updateCellSubgrid(Sudoku* puzzle, int x, int y)
     {
         for (jj = 0; jj < 3; jj++)
         {
-            Cell* currCell = puzzle->cells[ii + xOffset][jj + yOffset];
-
+            Cell* currCell = puzzle->cells[ii + xOffset*3][jj + yOffset*3];
+            
             if (currCell->value != -1)
             {
                 updatePossible(cell, currCell->value, FALSE);

@@ -8,7 +8,7 @@ int main(int argc, char** argv)
 {
     int errCode = 0;
 
-    printf("Welcome to Sudoku Solver v1.0. By Tristan Lynass.\n\n");
+    printf("Sudoku Solver v1.0\n");
 
     if (argc == 2)
     {
@@ -16,34 +16,15 @@ int main(int argc, char** argv)
         
         printSudoku(puzzle);
         solveSudoku(puzzle);
+        printf("\nSudoku solved:\n");
         printSudoku(puzzle);
         destroySudoku(puzzle);
-
-        /* ASSERTION: puzzle will be a valid Sudoku*, with only values 1 - 9 and empty linked-lists */
-        
-        /* 0 = success, 1 = invalid */
-        /*int result = solveSudoku(puzzle);*/
-        /*int result = TRUE;
-        if (result == TRUE)
-        {
-            printf("Sudoku solved:\n");
-            printSudoku(puzzle);
-        }
-        else
-        {
-            printf("Could not solve sudoku.\n");
-        }
-        generatePossibilities(puzzle); 
-        printSudoku(puzzle);
-        destroySudoku(puzzle);*/
     }
     else
     {
         printf("Incorrect number of arguments. Correct usage: %s <source file>.\n", argv[0]);
         errCode = 1;
-    }
-
-    printf("Exiting.\n");
+    } 
 
     return errCode;
 }
