@@ -174,12 +174,87 @@ int updateCellSubgrid(Sudoku* puzzle, int x, int y)
     return isUpdated;
 }
 
+/*
+let counter = 0;
+
+for (let ii = 0; ii < 9; ii++)
+{
+    let str = "";
+    for (let jj = 0; jj < 9; jj++)
+    {
+        str += (counter<10?" ":"") + counter + " ";
+        // str += ((counter%9)<10?" ":"") + counter%9 + " ";
+        // str += (Math.floor(counter/9)<10?" ":"") + Math.floor(counter/9) + " ";
+		counter++;
+    }
+    console.log(str);
+}
+
+     0  1  2  3  4  5  6  7  8
+     9 10 11 12 13 14 15 16 17
+    18 19 20 21 22 23 24 25 26
+    27 28 29 30 31 32 33 34 35
+    36 37 38 39 40 41 42 43 44
+    45 46 47 48 49 50 51 52 53
+    54 55 56 57 58 59 60 61 62
+    63 64 65 66 67 68 69 70 71
+    72 73 74 75 76 77 78 79 80
+ */
+
 Sudoku* readSudoku(char* filename)
 {
-    Sudoku* newPuzzle = createSudoku();
+    Sudoku* newPuzzle = NULL;
     FILE* file = fopen(filename, "r");
 
-    while(fscanf())
+    if (file == NULL || ferror(file)) perror("There was an error opening the file");
+    else
+    {
+        int counter = 0;
+
+        char currChar = ' ';
+        int currNum = -1;
+        int prevNum = -1;
+        newPuzzle = createSudoku();
+
+        while(!feof(file) && counter < 81)
+        {
+            if (fscanf(file, "%d", &currNum))
+            {
+                currChar = fgetc(file);
+                if (currChar == '?') counter += currNum;
+                else if (currChar == ',') 
+                {
+                    newPuzzle->cells[(counter) / 9][(counter) % 9]->value = currNum;
+                    counter++;
+                }
+                else prevNum = currNum; 
+
+                currNum = -1;
+            }
+            else
+            {
+                currChar = fgetc(file);
+                if (currChar == '?') /* Previous char was ?*/
+                {
+                    if (prevNum == -1) counter++;
+                    else
+                    {
+                        counter += prevNum;
+                        prevNum = -1;
+                    }
+                } 
+                else if (currChar == ',')
+                {
+                    if (prevNum != -1)
+                    {
+                        newPuzzle->cells[(counter) / 9][(counter) % 9]->value = prevNum;
+                        counter++;
+                        prevNum = -1;
+                    }
+                }
+            }
+        }
+    } 
 
     fclose(file);
 
