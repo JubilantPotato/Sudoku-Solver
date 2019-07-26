@@ -17,3 +17,9 @@ This is the resulting list
 `5,3,2?,7,4?,6,2?,1,9,5,4?,9,8,4?,6,?,8,3?,6,3?,3,4,2?,8,?,3,2?,1,7,3?,2,3?,6,?,6,4?,2,8,4?,4,1,9,2?,5,4?,8,2?,7,9`
 
 If your submitted file doesn't contain a valid sudoku, the application will abort and display the cause of the problem. Newlines and other whitespace will be ignored, so feel free to use it as you see fit.
+
+### To-Do
+1. Validate the sudokus generated through the program for validity
+2. Create more input test cases
+3. Incorperate new efficiencies in the algorithm
+4. Figure out what causes an infinite loop when sudoku can't be solved.
